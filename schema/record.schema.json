@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Record envelope",
+  "description": "One line of a .jsonl file. The content block is checked against the schema for its type.",
+  "type": "object",
+  "required": ["type", "meta", "content"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{2,80}$", "description": "Optional stable identifier, unique within its file."},
+    "type": {"type": "string", "enum": ["exam_question", "qa_pair", "text_document", "parallel_text", "audio_transcript", "structured_record"]},
+    "meta": {"type": "object"},
+    "content": {"type": "object"}
+  }
+}

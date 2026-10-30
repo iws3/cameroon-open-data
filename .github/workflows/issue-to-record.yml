@@ -1,0 +1,54 @@
+name: Turn question forms into records
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  convert:
+    if: contains(github.event.issue.labels.*.name, 'submit-question')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Create the record
+        id: make
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_USER: ${{ github.event.issue.user.login }}
+        run: python tools/issue_to_record.py
+      - name: Check the record
+        run: python tools/validate.py
+      - name: Open a pull request for review
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          BRANCH="submission/issue-${ISSUE_NUMBER}"
+          git config user.name "cameroon-open-data-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add data
+          git commit -m "Add question from issue #${ISSUE_NUMBER}"
+          git push origin "$BRANCH"
+          gh pr create --base "${{ github.event.repository.default_branch }}" \
+            --title "Question from issue #${ISSUE_NUMBER}" \
+            --body "Created automatically from issue #${ISSUE_NUMBER}. A reviewer will check it. Closes #${ISSUE_NUMBER}."
+          gh issue comment "$ISSUE_NUMBER" --body "Thank you! Your question has been turned into a record and sent for review. You will be credited when it is accepted."
+      - name: Tell the contributor what to fix
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          MSG="Thank you for your submission. Something needs a small fix before we can use it."
+          if [ -f /tmp/submission-error.txt ]; then MSG="$MSG"$'\n\n'"$(cat /tmp/submission-error.txt)"; fi
+          gh issue comment "$ISSUE_NUMBER" --body "$MSG"

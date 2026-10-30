@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Structured record",
+  "description": "A fact about an institution, place, law, statistic, crop, event or other entity.",
+  "type": "object",
+  "required": ["entity_type", "name", "attributes"],
+  "additionalProperties": false,
+  "properties": {
+    "entity_type": {"type": "string", "minLength": 2},
+    "name": {"type": "string", "minLength": 1},
+    "attributes": {"type": "object", "minProperties": 1},
+    "as_of_date": {"type": "string", "format": "date"}
+  }
+}

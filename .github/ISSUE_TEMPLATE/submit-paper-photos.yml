@@ -1,0 +1,64 @@
+name: Share photos of a paper
+description: No time to type? Share clear photos and another volunteer will transcribe them.
+title: "Photos: "
+labels: ["needs-transcription"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Take pictures in good light, with the paper flat on a table, one page per picture, and every line readable. Crop out adverts and phone numbers if you can.
+  - type: dropdown
+    id: exam
+    attributes:
+      label: Exam
+      options:
+        - GCE Ordinary Level
+        - GCE Advanced Level
+        - Technical GCE Ordinary Level
+        - Technical GCE Advanced Level
+        - Other GCE examination
+        - BEPC
+        - Probatoire
+        - Baccalauréat
+        - Baccalauréat technique
+        - CAP or BEP
+        - FSLC
+        - CEP
+        - Common Entrance
+        - University or professional concours
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: subject
+    attributes:
+      label: Subject
+    validations:
+      required: true
+  - type: input
+    id: year
+    attributes:
+      label: Year of the exam
+      description: Leave empty if you do not know.
+  - type: textarea
+    id: photos
+    attributes:
+      label: Photos or PDF
+      description: Drag your pictures or file into this box.
+    validations:
+      required: true
+  - type: dropdown
+    id: rights
+    attributes:
+      label: Your right to share it
+      options:
+        - I wrote it myself
+        - I have written permission from the owner
+        - It is an official past paper and the maintainers should check the rights
+        - I am not sure
+    validations:
+      required: true
+  - type: input
+    id: name
+    attributes:
+      label: Your name for credit

@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Exam question",
+  "type": "object",
+  "required": [
+    "exam_name",
+    "subject",
+    "question_text"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "exam_name": {
+      "type": "string",
+      "description": "For example GCE Ordinary Level, Probatoire, a named concours."
+    },
+    "exam_body": {
+      "type": "string"
+    },
+    "subject": {
+      "type": "string"
+    },
+    "year": {
+      "type": "integer",
+      "minimum": 1950,
+      "maximum": 2100,
+      "description": "Year of the examination. Leave it out if you do not know it."
+    },
+    "session": {
+      "type": "string"
+    },
+    "paper": {
+      "type": "string"
+    },
+    "section": {
+      "type": "string",
+      "description": "For example Section I, as printed on the paper."
+    },
+    "question_number": {
+      "type": "string"
+    },
+    "context": {
+      "type": "string",
+      "description": "A passage, data table or stem shared by several parts of a question. Repeat it on every part so each record stands alone."
+    },
+    "question_text": {
+      "type": "string",
+      "minLength": 3
+    },
+    "figure_description": {
+      "type": "string",
+      "description": "Plain words describing any diagram, graph or table the question depends on."
+    },
+    "question_format": {
+      "type": "string",
+      "enum": [
+        "multiple_choice",
+        "short_answer",
+        "essay",
+        "problem_solving",
+        "practical",
+        "true_false",
+        "fill_in",
+        "other"
+      ]
+    },
+    "options": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "answer": {
+      "type": "string"
+    },
+    "answer_explanation": {
+      "type": "string"
+    },
+    "marks": {
+      "type": "number",
+      "minimum": 0
+    },
+    "topics": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "figure_file": {
+      "type": "string",
+      "description": "Relative path to an image if the question depends on a diagram."
+    }
+  }
+}

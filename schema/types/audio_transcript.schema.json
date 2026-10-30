@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Audio transcript",
+  "type": "object",
+  "required": ["audio_file", "transcript"],
+  "additionalProperties": false,
+  "properties": {
+    "audio_file": {"type": "string", "description": "Relative path or link to the recording."},
+    "transcript": {"type": "string", "minLength": 1},
+    "translation_en": {"type": "string"},
+    "translation_fr": {"type": "string"},
+    "duration_seconds": {"type": "number", "minimum": 0},
+    "speaker_count": {"type": "integer", "minimum": 1},
+    "dialect_note": {"type": "string"},
+    "consent_of_speakers": {"type": "boolean", "description": "True only if every speaker agreed to the recording being shared."}
+  }
+}

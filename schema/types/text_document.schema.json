@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Text document",
+  "type": "object",
+  "required": ["kind", "text"],
+  "additionalProperties": false,
+  "properties": {
+    "kind": {"type": "string", "enum": ["proverb", "folktale", "song_lyrics", "poem", "speech", "law_text", "news_article", "article", "description", "recipe", "dictionary_entry", "oral_history", "other"]},
+    "title": {"type": "string"},
+    "text": {"type": "string", "minLength": 1},
+    "author_or_speaker": {"type": "string"},
+    "translation_en": {"type": "string"},
+    "translation_fr": {"type": "string"},
+    "meaning_or_context": {"type": "string"}
+  }
+}

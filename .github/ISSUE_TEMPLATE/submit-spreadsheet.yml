@@ -1,0 +1,25 @@
+name: Send a spreadsheet of questions
+description: For teachers and others with many questions. Use the project's spreadsheet template.
+title: "Spreadsheet: "
+labels: ["needs-conversion"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Download `templates/exam-questions-template.csv` from the repository, fill in one question per row, save it as CSV, and attach it below. A maintainer will convert it and add it to the right folder.
+  - type: textarea
+    id: file
+    attributes:
+      label: Your spreadsheet
+      description: Drag the CSV or Excel file into this box.
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything we should know?
+      description: For example the exam, the subject and the years it covers.
+  - type: input
+    id: name
+    attributes:
+      label: Your name for credit

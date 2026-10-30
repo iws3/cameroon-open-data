@@ -1,0 +1,121 @@
+name: Submit an exam question
+description: Type one exam question into a simple form. No coding needed.
+title: "Question: "
+labels: ["submit-question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for adding to Cameroon's memory. Fill in the boxes below. If you are unsure about a box, leave it empty. A reviewer will look at your question before it is accepted.
+        Type exactly what is printed on the paper. Please do not copy advertisements, website names or phone numbers that appear on circulating copies.
+  - type: dropdown
+    id: exam
+    attributes:
+      label: Exam
+      options:
+        - GCE Ordinary Level
+        - GCE Advanced Level
+        - Technical GCE Ordinary Level
+        - Technical GCE Advanced Level
+        - Other GCE examination
+        - BEPC
+        - Probatoire
+        - Baccalauréat
+        - Baccalauréat technique
+        - CAP or BEP
+        - FSLC
+        - CEP
+        - Common Entrance
+        - University or professional concours
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: subject
+    attributes:
+      label: Subject
+      description: The subject name as printed on the paper, for example Physics.
+    validations:
+      required: true
+  - type: input
+    id: year
+    attributes:
+      label: Year of the exam
+      description: Four digits. Leave empty if you do not know.
+  - type: input
+    id: paper
+    attributes:
+      label: Paper or section
+      description: For example Paper 2 or Section I. Leave empty if the page does not say.
+  - type: input
+    id: number
+    attributes:
+      label: Question number
+      description: As printed, for example 5.
+  - type: textarea
+    id: question
+    attributes:
+      label: The question
+      description: The whole question with all its parts (a), (b), (c), in the same order as the paper. Keep the marks where they appear, for example (2 marks). Write [unclear] if a word is unreadable.
+    validations:
+      required: true
+  - type: input
+    id: marks
+    attributes:
+      label: Marks
+      description: Total marks for the whole question, if you can add them up.
+  - type: textarea
+    id: figure
+    attributes:
+      label: Describe any diagram, graph or table
+      description: Explain in words what the picture shows, so someone who cannot see it could still understand the question. You may also drag a clear picture of it into this box.
+  - type: textarea
+    id: answer
+    attributes:
+      label: Answer or marking guide
+      description: Only if you are sure it is correct. Leave empty otherwise.
+  - type: dropdown
+    id: language
+    attributes:
+      label: Language of the question
+      options:
+        - English
+        - French
+        - Both English and French
+    validations:
+      required: true
+  - type: dropdown
+    id: source
+    attributes:
+      label: Where did this question come from?
+      options:
+        - A past paper I have
+        - I wrote it myself
+        - A textbook or revision book
+        - Another source
+    validations:
+      required: true
+  - type: dropdown
+    id: rights
+    attributes:
+      label: Your right to share it
+      description: Choose the option that is true. "I am not sure" is a good answer.
+      options:
+        - I wrote it myself
+        - I have written permission from the owner
+        - It is an official past paper and the maintainers should check the rights
+        - I am not sure
+    validations:
+      required: true
+  - type: input
+    id: name
+    attributes:
+      label: Your name for credit
+      description: The name you want attached to your contribution. If empty, your GitHub username is used.
+  - type: checkboxes
+    id: agreement
+    attributes:
+      label: Agreement
+      options:
+        - label: I removed adverts, phone numbers and private information, and I understand the contribution is shared under the project's data license.
+          required: true
