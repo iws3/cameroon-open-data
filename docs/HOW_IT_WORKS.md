@@ -51,8 +51,8 @@ flowchart TD
 In words, step by step:
 
 1. **The form.** The contributor chooses "Submit an exam question" in the Issues tab. The form file in `.github/ISSUE_TEMPLATE/` defines every box. GitHub turns the answers into an issue whose text has a `### Box name` heading followed by the answer for each box. The form automatically adds the label `submit-question`.
-2. **The trigger.** `issue-to-record.yml` listens for newly opened issues. It only runs when the label `submit-question` is present, so ordinary issues are ignored. This is why the labels must exist.
-3. **Reading the issue.** `issue_to_record.py` splits the issue text at each `###` heading and matches the headings to field names. It stops with a friendly message if the exam, subject or question is empty, or if the agreement box is not ticked.
+2. **The trigger.** `issue-to-record.yml` listens for newly opened issues. It runs only when the issue text contains the `### Agreement` heading, which only the submission forms produce, so ordinary issues, photo forms and claims are ignored. It does not depend on labels, so a missing label cannot stop it.
+3. **Reading the issue.** `issue_to_record.py` works out which form was used from its headings (for example "The question" means the exam form, "The text" means the text form), splits the issue text at each `###` heading and matches the headings to field names. It stops with a friendly message if the exam, subject or question is empty, or if the agreement box is not ticked.
 4. **Building the record.** `common.build_record` turns the answers into a record. Dropdown choices are translated into schema values, for example "I am not sure" becomes `unclear_needs_review`. It computes the fingerprint (subject plus question text, ignoring capitals, accents, spaces and punctuation), picks the folder from the exam and subject, and creates a unique file name.
 5. **Duplicate check one.** If the fingerprint already exists anywhere in `data/`, the script stops and the workflow comments "already in the collection" and closes the issue.
 6. **Duplicate check two.** The workflow searches open pull requests for the same fingerprint, which is stored at the bottom of every pull request description. If one exists, the contributor is told and the issue is closed.
@@ -67,6 +67,24 @@ If anything fails, the last step of the workflow comments on the issue with what
 ## 5. Why contributors cannot conflict
 
 Every submission is a new file with its own name, so two pull requests never change the same file. Git only complains when two branches edit the same lines, and here that can never happen. The contributor's name lives inside the record, not in a shared list, and nothing in the repository gets edited by hand every time someone contributes.
+
+## 5b. The forms, and how to add or change them
+
+| Form | What it collects | Record type |
+|---|---|---|
+| Submit an exam question | Questions from GCE, Francophone, primary and concours examinations | `exam_question` |
+| Submit a text | Proverbs, stories, speeches, laws, recipes, articles, descriptions, oral histories | `text_document` |
+| Submit a question and its answer | Local knowledge as questions with checkable answers, in any sector | `qa_pair` |
+| Submit a translation | The same sentence in two languages, including Pidgin and national languages | `parallel_text` |
+| Submit facts about a place, institution, law, crop or event | One named thing with details written as `label: value` lines | `structured_record` |
+| Share a recording, scan or document | Audio, video or scans for a volunteer to transcribe | none yet |
+| Share photos of a paper, Send a spreadsheet, Claim a paper | Helpers for exam material | none |
+
+Every form except the exam form shares the same closing boxes: language, region, how the contributor knows it, where it comes from, the right to share it, whether it needs special care, the contributor's name, and the agreement. The folder box lists every folder, so any kind of record can go in any sector.
+
+The forms are generated from one description in `tools/forms_spec.py`. To add a folder, add it to `tools/build_structure.py`, then run `python tools/build_structure.py` and `python tools/build_forms.py`, and commit the changes. To change a form box, edit `tools/forms_spec.py` and run `python tools/build_forms.py`. Never edit the generated form files by hand, because the next run overwrites them.
+
+Languages: the contributor picks English, French, Pidgin or Camfranglais, or types the name of another language. Known Cameroonian languages are matched to their codes automatically. A language the system does not know is stored as `und` with the name in `language_note`, so nothing is rejected and a reviewer can fix the code later.
 
 ## 6. Other ways to contribute
 
@@ -95,7 +113,7 @@ Still to confirm, in this order:
 
 ## 8. When something goes wrong
 
-**The form creates an issue but nothing happens.** Open the Actions tab. If there is no run, the label `submit-question` is missing or the workflow file is not on `master`. If there is a failed run, open it and read the red step.
+**The form creates an issue but nothing happens.** Open the Actions tab. If there is no run at all, the workflow file is not on `master`. If the run is grey and says skipped, the issue did not contain the `### Agreement` heading, which means it was not created from a submission form. If there is a failed run, open it and read the red step.
 
 **The workflow fails at "open a pull request".** Actions are not allowed to create pull requests. Switch on the setting in step 4.
 

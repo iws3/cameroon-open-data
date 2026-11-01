@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   convert:
-    if: contains(github.event.issue.labels.*.name, 'submit-question')
+    if: contains(github.event.issue.body, '### Agreement')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -35,7 +35,7 @@ jobs:
         run: |
           OPEN=$(gh pr list --state open --search "fingerprint-${FP} in:body" --json number --jq 'length')
           if [ "$OPEN" != "0" ]; then
-            echo "Another contributor already sent this question and it is waiting for review. Thank you for trying! There is nothing more for you to do." > /tmp/submission-error.txt
+            echo "Another contributor already sent this and it is waiting for review. Thank you for trying! There is nothing more for you to do." > /tmp/submission-error.txt
             exit 1
           fi
       - name: Check the record
@@ -51,18 +51,18 @@ jobs:
           git config user.email "bot@users.noreply.github.com"
           git checkout -b "$BRANCH"
           git add data
-          git commit -m "Add question from issue #${ISSUE_NUMBER}"
+          git commit -m "Add submission from issue #${ISSUE_NUMBER}"
           git push origin "$BRANCH"
           PR=$(gh pr create --base "${{ github.event.repository.default_branch }}" \
-            --title "Question from issue #${ISSUE_NUMBER}" \
-            --body "Created automatically from issue #${ISSUE_NUMBER}. A reviewer checks the typing and the answer, then approves. Closes #${ISSUE_NUMBER}.
+            --title "Submission from issue #${ISSUE_NUMBER}" \
+            --body "Created automatically from issue #${ISSUE_NUMBER}. A reviewer checks it, then approves. Closes #${ISSUE_NUMBER}.
 
           fingerprint-${FP}")
           gh pr merge "$PR" --auto --squash --delete-branch || true
           # Pull requests opened with the built-in token do not start the normal checks,
           # so we start the validate check ourselves on the new branch.
           gh workflow run validate.yml --ref "$BRANCH" || true
-          gh issue comment "$ISSUE_NUMBER" --body "Thank you! Your question was turned into a record and sent for review. It will be added as soon as a reviewer approves it, and you will be credited."
+          gh issue comment "$ISSUE_NUMBER" --body "Thank you! Your contribution was turned into a record and sent for review. It will be added as soon as a reviewer approves it, and you will be credited."
       - name: Tell the contributor what happened
         if: failure()
         env:
@@ -72,6 +72,6 @@ jobs:
           MSG="Thank you for your submission."
           if [ -f /tmp/submission-error.txt ]; then MSG="$MSG"$'\n\n'"$(cat /tmp/submission-error.txt)"; fi
           gh issue comment "$ISSUE_NUMBER" --body "$MSG"
-          if [ -f /tmp/submission-error.txt ] && grep -qE "already in the collection|already sent this question" /tmp/submission-error.txt; then
+          if [ -f /tmp/submission-error.txt ] && grep -qE "already in the collection|already sent this" /tmp/submission-error.txt; then
             gh issue close "$ISSUE_NUMBER" --reason "not planned"
           fi

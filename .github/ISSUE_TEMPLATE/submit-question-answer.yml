@@ -1,0 +1,208 @@
+name: "Submit a question and its answer"
+description: "Local knowledge as a question with a reliable answer."
+title: "Q&A: "
+labels: ["submit-qa"]
+body:
+  - type: markdown
+    attributes:
+      value: "Write a question that people in Cameroon really ask, with the answer you know to be correct. Good answers can be checked somewhere."
+  - type: dropdown
+    id: folder
+    attributes:
+      label: "Folder"
+      description: "Choose where it belongs. If you are unsure, choose the last option."
+      options:
+        - "Education / Curricula and textbooks"
+        - "Culture / Proverbs and sayings"
+        - "Culture / Folktales and oral literature"
+        - "Culture / Music and dance"
+        - "Culture / Festivals and ceremonies"
+        - "Culture / Food and cuisine"
+        - "Culture / Art and craft"
+        - "Culture / Chieftaincy and traditions"
+        - "Culture / Dress and attire"
+        - "Languages / English"
+        - "Languages / French"
+        - "Languages / Cameroon pidgin english"
+        - "Languages / Camfranglais"
+        - "Languages / National languages"
+        - "Languages / Parallel corpora"
+        - "Languages / Speech recordings"
+        - "Languages / Dictionaries and glossaries"
+        - "Politics and governance / Elections"
+        - "Politics and governance / Parliament"
+        - "Politics and governance / Political parties"
+        - "Politics and governance / Government institutions"
+        - "Politics and governance / Decentralization"
+        - "Politics and governance / Speeches and communiques"
+        - "Politics and governance / Public administration"
+        - "Law and justice / Constitution and statutes"
+        - "Law and justice / OHADA and regional law"
+        - "Law and justice / Court decisions"
+        - "Law and justice / Legal procedures"
+        - "Law and justice / Rights and citizenship"
+        - "History / Precolonial"
+        - "History / Colonial period"
+        - "History / Independence and reunification"
+        - "History / Post independence"
+        - "History / Oral histories"
+        - "History / Archives and documents"
+        - "Geography and environment / Administrative units"
+        - "Geography and environment / Places and place names"
+        - "Geography and environment / Climate and weather"
+        - "Geography and environment / Biodiversity and protected areas"
+        - "Geography and environment / Natural resources"
+        - "Health / Public health"
+        - "Health / Health facilities"
+        - "Health / Medical terms in local languages"
+        - "Health / Health education"
+        - "Agriculture / Crops"
+        - "Agriculture / Livestock and fisheries"
+        - "Agriculture / Farming calendars"
+        - "Agriculture / Markets and prices"
+        - "Agriculture / Farmer advice"
+        - "Economy and business / National statistics"
+        - "Economy and business / Trade and industry"
+        - "Economy and business / Banking and mobile money"
+        - "Economy and business / Taxation and customs"
+        - "Economy and business / Jobs and labour"
+        - "Economy and business / Entrepreneurship"
+        - "Media and news / Newspapers and magazines"
+        - "Media and news / Radio and television"
+        - "Media and news / Fact checks"
+        - "Religion and community / Religions and beliefs"
+        - "Religion and community / Community associations"
+        - "Religion and community / Social customs"
+        - "Sports / Football"
+        - "Sports / Athletics and other sports"
+        - "Sports / Traditional games"
+        - "Technology and infrastructure / Telecommunications"
+        - "Technology and infrastructure / Energy and water"
+        - "Technology and infrastructure / Transport and roads"
+        - "Technology and infrastructure / Digital services"
+        - "Daily life / Conversations and dialogues"
+        - "Daily life / Common questions"
+        - "Daily life / Emergency and safety"
+        - "Not sure (the maintainers will place it)"
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: "Question asked"
+    validations:
+      required: true
+  - type: textarea
+    id: answer
+    attributes:
+      label: "Answer given"
+    validations:
+      required: true
+  - type: input
+    id: topic
+    attributes:
+      label: "Topic"
+      description: "For example voter registration."
+  - type: input
+    id: evidence
+    attributes:
+      label: "Where can the answer be checked?"
+      description: "A document, an office, a website."
+  - type: dropdown
+    id: language
+    attributes:
+      label: "Language"
+      description: "The language the main text is written in."
+      options:
+        - "English"
+        - "French"
+        - "Cameroon Pidgin English"
+        - "Camfranglais"
+        - "Another Cameroonian language (write its name in the next box)"
+        - "Several languages (write them in the next box)"
+    validations:
+      required: true
+  - type: input
+    id: language_other
+    attributes:
+      label: "Which language or languages?"
+      description: "Only if you chose another or several. Write the name, or its three-letter code if you know it. If you do not know the code, the name is fine."
+  - type: dropdown
+    id: region
+    attributes:
+      label: "Region of Cameroon"
+      description: "Where this comes from or where it is used."
+      options:
+        - "Whole country"
+        - "Adamawa"
+        - "Centre"
+        - "East"
+        - "Far North"
+        - "Littoral"
+        - "North"
+        - "North-West"
+        - "South"
+        - "South-West"
+        - "West"
+    validations:
+      required: true
+  - type: dropdown
+    id: source_kind
+    attributes:
+      label: "How do you know this?"
+      options:
+        - "Told to me by someone (oral tradition)"
+        - "My own knowledge or experience"
+        - "A book"
+        - "A newspaper or magazine"
+        - "A website"
+        - "An official document"
+        - "A recording I made"
+        - "A radio or television broadcast"
+        - "Another source"
+    validations:
+      required: true
+  - type: textarea
+    id: source_note
+    attributes:
+      label: "Where does it come from?"
+      description: "The person, book, place, year or website, so someone else could find it again."
+    validations:
+      required: true
+  - type: dropdown
+    id: rights
+    attributes:
+      label: "Your right to share it"
+      description: "Choose the option that is true. \"I am not sure\" is a good answer."
+      options:
+        - "I created it myself, or I am sharing my own knowledge"
+        - "It is an official public document"
+        - "It is in the public domain or under an open license"
+        - "I have written permission from the owner"
+        - "I am not sure"
+    validations:
+      required: true
+  - type: dropdown
+    id: sensitivity
+    attributes:
+      label: "Does it need special care?"
+      description: "Some knowledge belongs to a community and should be reviewed by its members first."
+      options:
+        - "No, it is fine to share"
+        - "I removed personal details from it"
+        - "It is cultural knowledge the community should review"
+        - "It is culturally sensitive"
+    validations:
+      required: true
+  - type: input
+    id: contributor
+    attributes:
+      label: "Your name for credit"
+      description: "If empty, your GitHub username is used."
+  - type: checkboxes
+    id: agreement
+    attributes:
+      label: "Agreement"
+      options:
+        - label: "I removed phone numbers, home addresses and private information, and I understand the contribution is shared under the project's data license."
+          required: true

@@ -8,7 +8,7 @@ You can add records, correct records that contain mistakes, review pull requests
 
 ## The easiest way
 
-If you are not a developer, read `docs/EASY_START.md`. You can contribute by filling in a web form, by sharing photos of a paper, or by sending a spreadsheet. No code and no file formats are involved.
+If you are not a developer, read `docs/EASY_START.md`. You can contribute by filling in one of the web forms (exam questions, texts, questions and answers, translations, facts), by sharing a recording or photos, or by sending a spreadsheet. No code and no file formats are involved.
 
 ## Step by step for developers
 
@@ -16,7 +16,7 @@ If you are not a developer, read `docs/EASY_START.md`. You can contribute by fil
 2. Fork the repository using the Fork button on its GitHub page, then clone your fork to your computer.
 3. Install the checker once by running `pip install -r requirements.txt`.
 4. Open the `data` folder and find the folder that fits your material. Read the short `README.md` in it. If nothing fits, use `data/_inbox`.
-5. Create a file ending in `.jsonl` with a name that starts with the year or a clear description, for example `2018-chemistry-paper-2.jsonl`. Put one record on each line.
+5. Create a new file ending in `.jsonl`, never edit an existing contributor's file, so that two people can never conflict. Use a clear name such as `chemistry-paper-2-q4.jsonl`. A file may hold several records of your own, one per line.
 6. Write your records following `docs/FORMAT_GUIDE.md`. The six record types and their fields are explained there with examples.
 7. Run `python tools/validate.py` and fix anything it reports.
 8. Commit your work, push it to your fork, and open a pull request. In the description, say what you added, where it came from, and anything the reviewer should look at closely.

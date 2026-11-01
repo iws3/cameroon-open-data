@@ -1,4 +1,6 @@
 """Shared helpers for turning simple contributions into schema-valid records."""
+import hashlib
+import json
 import re
 import unicodedata
 from datetime import date
@@ -121,9 +123,61 @@ def build_record(f, contributor_fallback):
     if year.isdigit():
         meta["source"]["year"] = int(year)
 
-    folder = target_folder(exam, subject)
-    paper = slug(f.get("paper", "")) if f.get("paper") else "questions"
-    filename = f"{year if year.isdigit() else 'unknown-year'}-{slug(subject)}-{paper}.jsonl"
-    rid = "-".join(x for x in [slug(subject), year if year.isdigit() else "unknown-year", paper, "q" + slug(f.get("number", "")) if f.get("number") else ""] if x)
-    record = {"id": rid.lower(), "type": "exam_question", "meta": meta, "content": content}
-    return record, folder, filename
+    fp = fingerprint(subject, f["question"])
+    folder = target_folder(exam, subject) / (year if year.isdigit() else "unknown-year")
+    paper = slug(f.get("paper", ""))[:20] if f.get("paper") else "questions"
+    num = slug(f.get("number", ""))[:10] if f.get("number") else "x"
+    stem = f"{slug(subject)[:25]}-{paper}-q{num}-{fp[:6]}"
+    record = {"id": f"{stem}-{year if year.isdigit() else 'unknown-year'}".lower(), "type": "exam_question", "meta": meta, "content": content}
+    return record, folder, stem + ".jsonl", fp
+
+
+def normalize(text):
+    """Lowercase, remove accents and tone marks, keep letters and digits of any alphabet.
+
+    Small differences in capitals, spaces and punctuation do not hide a duplicate,
+    and letters such as the open e or open o used in Cameroonian languages are kept.
+    """
+    text = unicodedata.normalize("NFKD", text)
+    text = "".join(ch for ch in text if unicodedata.category(ch) != "Mn")
+    return re.sub(r"[\W_]+", "", text.casefold())
+
+
+def fingerprint(subject, question_text):
+    return hashlib.sha1((normalize(subject) + "|" + normalize(question_text)).encode()).hexdigest()
+
+
+def record_fingerprint(rec):
+    """One fingerprint for any record type, based on what makes the record unique."""
+    kind, c = rec.get("type"), rec.get("content", {})
+    if kind == "exam_question":
+        return fingerprint(c.get("subject", ""), c.get("question_text", ""))
+    if kind == "qa_pair":
+        key = c.get("question", "")
+    elif kind == "text_document":
+        key = c.get("text", "")
+    elif kind == "parallel_text":
+        key = c.get("source_language", "") + c.get("source_text", "") + "|" + c.get("target_language", "") + c.get("target_text", "")
+    elif kind == "audio_transcript":
+        key = c.get("transcript", "")
+    elif kind == "structured_record":
+        key = c.get("entity_type", "") + "|" + c.get("name", "") + "|" + json.dumps(c.get("attributes", {}), sort_keys=True, ensure_ascii=False)
+    else:
+        key = json.dumps(c, sort_keys=True, ensure_ascii=False)
+    return hashlib.sha1((str(kind) + "|" + normalize(key)).encode()).hexdigest()
+
+
+def existing_fingerprints():
+    """Map fingerprint -> 'path:line' for every record already in data/."""
+    found = {}
+    for path in sorted((ROOT / "data").rglob("*.jsonl")):
+        with path.open(encoding="utf-8") as fh:
+            for n, line in enumerate(fh, 1):
+                if not line.strip():
+                    continue
+                try:
+                    rec = json.loads(line)
+                except json.JSONDecodeError:
+                    continue
+                found.setdefault(record_fingerprint(rec), f"{path.relative_to(ROOT).as_posix()}:{n}")
+    return found

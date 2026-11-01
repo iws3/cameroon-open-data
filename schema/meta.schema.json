@@ -3,7 +3,12 @@
   "title": "Record metadata",
   "description": "Information every record must carry about itself.",
   "type": "object",
-  "required": ["contributor", "language", "source", "rights"],
+  "required": [
+    "contributor",
+    "language",
+    "source",
+    "rights"
+  ],
   "additionalProperties": false,
   "properties": {
     "contributor": {
@@ -15,38 +20,102 @@
       "type": "array",
       "minItems": 1,
       "uniqueItems": true,
-      "items": {"type": "string", "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]+)*$"},
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]+)*$"
+      },
       "description": "Language codes. Use en for English, fr for French, pcm for Cameroon Pidgin English. Use the ISO 639-3 code for other languages."
     },
     "source": {
       "type": "object",
-      "required": ["kind", "citation"],
+      "required": [
+        "kind",
+        "citation"
+      ],
       "additionalProperties": false,
       "properties": {
         "kind": {
           "type": "string",
-          "enum": ["exam_paper", "official_publication", "book", "newspaper_or_magazine", "website", "broadcast", "oral_tradition", "field_recording", "personal_knowledge", "other"]
+          "enum": [
+            "exam_paper",
+            "official_publication",
+            "book",
+            "newspaper_or_magazine",
+            "website",
+            "broadcast",
+            "oral_tradition",
+            "field_recording",
+            "personal_knowledge",
+            "other"
+          ]
         },
-        "citation": {"type": "string", "minLength": 3, "description": "Where this came from, written so another person could find it again."},
-        "url": {"type": "string", "format": "uri"},
-        "year": {"type": "integer", "minimum": 1800, "maximum": 2100}
+        "citation": {
+          "type": "string",
+          "minLength": 3,
+          "description": "Where this came from, written so another person could find it again."
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "year": {
+          "type": "integer",
+          "minimum": 1800,
+          "maximum": 2100
+        }
       }
     },
     "rights": {
       "type": "string",
-      "enum": ["public_domain", "open_license", "contributor_owned", "permission_granted", "official_public_document", "unclear_needs_review"],
+      "enum": [
+        "public_domain",
+        "open_license",
+        "contributor_owned",
+        "permission_granted",
+        "official_public_document",
+        "unclear_needs_review"
+      ],
       "description": "Our honest understanding of the right to share this record."
     },
     "region": {
       "type": "string",
-      "enum": ["national", "Adamawa", "Centre", "East", "Far North", "Littoral", "North", "North-West", "South", "South-West", "West"]
+      "enum": [
+        "national",
+        "Adamawa",
+        "Centre",
+        "East",
+        "Far North",
+        "Littoral",
+        "North",
+        "North-West",
+        "South",
+        "South-West",
+        "West"
+      ]
     },
     "sensitivity": {
       "type": "string",
-      "enum": ["none", "personal_information_removed", "culturally_sensitive", "needs_community_review"],
+      "enum": [
+        "none",
+        "personal_information_removed",
+        "culturally_sensitive",
+        "needs_community_review"
+      ],
       "default": "none"
     },
-    "collected_on": {"type": "string", "format": "date"},
-    "verified_by": {"type": "array", "items": {"type": "string"}}
+    "collected_on": {
+      "type": "string",
+      "format": "date"
+    },
+    "verified_by": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "language_note": {
+      "type": "string",
+      "description": "The name of the language when you do not know its code, or any remark about dialect or spelling."
+    }
   }
 }

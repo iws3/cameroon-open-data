@@ -12,6 +12,8 @@ from pathlib import Path
 
 from jsonschema import Draft202012Validator, FormatChecker
 
+from common import normalize, record_fingerprint
+
 ROOT = Path(__file__).resolve().parent.parent
 SCHEMA_DIR = ROOT / "schema"
 
@@ -87,6 +89,42 @@ def check_file(path, envelope, meta, types):
     return count, errors, warnings
 
 
+def repo_duplicates(files):
+    """Exact repeats are errors. Same numbered exam question or same named thing with different content is a warning."""
+    errors, warnings = [], []
+    by_fp, by_key = {}, {}
+    data_root = ROOT / "data"
+    for path in files:
+        try:
+            path.resolve().relative_to(data_root)
+        except ValueError:
+            continue
+        with path.open(encoding="utf-8") as fh:
+            for n, line in enumerate(fh, 1):
+                try:
+                    rec = json.loads(line)
+                except json.JSONDecodeError:
+                    continue
+                if not isinstance(rec, dict):
+                    continue
+                c, where = rec.get("content", {}), f"{path}:{n}"
+                fp = record_fingerprint(rec)
+                if fp in by_fp:
+                    errors.append(f"{where}: same as {by_fp[fp]}. Please do not add it twice.")
+                else:
+                    by_fp[fp] = where
+                key = None
+                if rec.get("type") == "exam_question" and c.get("year") and c.get("question_number"):
+                    key = ("exam", c.get("exam_name"), c.get("subject"), c.get("year"), c.get("paper"), c.get("section"), c.get("question_number"))
+                elif rec.get("type") == "structured_record":
+                    key = ("fact", normalize(c.get("entity_type", "")), normalize(c.get("name", "")))
+                if key:
+                    if key in by_key and by_key[key][1] != fp:
+                        warnings.append(f"{where}: describes the same thing as {by_key[key][0]} but with different content. A reviewer should compare or merge them.")
+                    by_key.setdefault(key, (where, fp))
+    return errors, warnings
+
+
 def main():
     envelope, meta, types = build_validators()
     files = files_to_check(sys.argv[1:])
@@ -96,6 +134,9 @@ def main():
         total += c
         all_errors += e
         all_warnings += w
+    dup_e, dup_w = repo_duplicates(files)
+    all_errors += dup_e
+    all_warnings += dup_w
     for w in all_warnings:
         print("WARNING", w)
     for e in all_errors:
