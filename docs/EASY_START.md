@@ -2,7 +2,24 @@
 
 If you can read a question and type it, you can contribute. Choose the way that suits you.
 
-## Way 1: the question form (about five minutes per question)
+## Before you start
+
+If you plan to type a whole paper, open "Claim a paper to transcribe" in the Issues tab first, and check that nobody else already holds it. For a single question you can go straight to the form. If the question is already in the collection, the system will tell you kindly and nothing is lost.
+
+## What can I share?
+
+Cameroon is far more than its exams. In the Issues tab, under New issue, you will find a form for each kind of contribution:
+
+- **Submit an exam question**: GCE, BEPC, Probatoire, Baccalauréat, concours and other examination questions.
+- **Submit a text**: a proverb, a folktale, a speech, a law, a recipe, a description of a custom, an oral history.
+- **Submit a question and its answer**: something people in Cameroon ask, with an answer you know is right.
+- **Submit a translation**: the same sentence in two languages, such as Pidgin and English, or Ewondo and French.
+- **Submit facts about a place, institution, law, crop or event**: for example a town, a ministry, a festival, a football club.
+- **Share a recording, scan or document**: audio, video or a scan that a volunteer will transcribe.
+
+Each form is a set of ordinary boxes. Choose the folder that fits, and if you are not sure, choose the last option and the maintainers will place it for you. Every form asks where your contribution comes from and whether you have the right to share it. "I am not sure" is always an acceptable answer.
+
+## Way 1: the exam question form (about five minutes per question)
 
 1. Open the repository on GitHub and click the Issues tab.
 2. Click New issue, then choose "Submit an exam question".

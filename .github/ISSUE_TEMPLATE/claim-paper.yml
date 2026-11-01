@@ -1,0 +1,45 @@
+name: Claim a paper to transcribe
+description: Telling others you are working on a paper stops two people typing the same one.
+title: "Claim: "
+labels: ["claimed"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before you start typing a whole paper, search the Issues tab for the label "claimed" to see whether someone already has it. If not, tell us here. When you finish, close this issue.
+        If you have not sent anything within three weeks, a maintainer will release the claim so someone else can take over. That is completely fine and no one is judged for it.
+  - type: dropdown
+    id: exam
+    attributes:
+      label: Exam
+      options:
+        - GCE Ordinary Level
+        - GCE Advanced Level
+        - Technical GCE Ordinary Level
+        - Technical GCE Advanced Level
+        - Other GCE examination
+        - BEPC
+        - Probatoire
+        - Baccalauréat
+        - Baccalauréat technique
+        - CAP or BEP
+        - FSLC
+        - CEP
+        - Common Entrance
+        - University or professional concours
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: subject
+    attributes:
+      label: Subject
+    validations:
+      required: true
+  - type: input
+    id: year
+    attributes:
+      label: Year and paper
+      description: For example 2019, Paper 2.
+    validations:
+      required: true

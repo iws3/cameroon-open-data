@@ -1,0 +1,63 @@
+name: "Share a recording, scan or document"
+description: "Share audio, video or a scan. A volunteer will transcribe it."
+title: "Recording: "
+labels: ["needs-transcription"]
+body:
+  - type: markdown
+    attributes:
+      value: "Share a recording of a story, a song, a conversation, a radio programme, or a scan of a document. A volunteer will transcribe it. Please share only what you recorded yourself or have permission to share, and only recordings of people who agreed to be recorded."
+  - type: dropdown
+    id: sector
+    attributes:
+      label: "Sector"
+      options:
+        - "Education"
+        - "Culture"
+        - "Languages"
+        - "Politics and governance"
+        - "Law and justice"
+        - "History"
+        - "Geography and environment"
+        - "Health"
+        - "Agriculture"
+        - "Economy and business"
+        - "Media and news"
+        - "Religion and community"
+        - "Sports"
+        - "Technology and infrastructure"
+        - "Daily life"
+        - "Not sure"
+    validations:
+      required: true
+  - type: textarea
+    id: files
+    attributes:
+      label: "Files"
+      description: "Drag your audio, video, picture or PDF into this box."
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: "What is it?"
+      description: "Who is speaking, about what, where and when. Keep full names of private people out if they did not agree."
+    validations:
+      required: true
+  - type: input
+    id: lang
+    attributes:
+      label: "Language"
+      description: "For example Ewondo, Pidgin, French."
+    validations:
+      required: true
+  - type: input
+    id: contributor
+    attributes:
+      label: "Your name for credit"
+  - type: checkboxes
+    id: consent
+    attributes:
+      label: "Consent"
+      options:
+        - label: "Every person speaking agreed to be recorded and to the recording being shared, and I have the right to share it."
+          required: true
