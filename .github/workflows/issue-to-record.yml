@@ -8,6 +8,7 @@ permissions:
   contents: write
   pull-requests: write
   issues: write
+  actions: write
 
 jobs:
   convert:
@@ -15,22 +16,35 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
       - run: pip install -r requirements.txt
-      - name: Create the record
+      - name: Create the record (stops if the question already exists)
         id: make
         env:
           ISSUE_BODY: ${{ github.event.issue.body }}
           ISSUE_USER: ${{ github.event.issue.user.login }}
         run: python tools/issue_to_record.py
+      - name: Check nobody else already has this question waiting for review
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          FP: ${{ steps.make.outputs.fingerprint }}
+        run: |
+          OPEN=$(gh pr list --state open --search "fingerprint-${FP} in:body" --json number --jq 'length')
+          if [ "$OPEN" != "0" ]; then
+            echo "Another contributor already sent this question and it is waiting for review. Thank you for trying! There is nothing more for you to do." > /tmp/submission-error.txt
+            exit 1
+          fi
       - name: Check the record
         run: python tools/validate.py
-      - name: Open a pull request for review
+      - name: Open a pull request and let it merge itself once approved
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
+          FP: ${{ steps.make.outputs.fingerprint }}
         run: |
           BRANCH="submission/issue-${ISSUE_NUMBER}"
           git config user.name "cameroon-open-data-bot"
@@ -39,16 +53,25 @@ jobs:
           git add data
           git commit -m "Add question from issue #${ISSUE_NUMBER}"
           git push origin "$BRANCH"
-          gh pr create --base "${{ github.event.repository.default_branch }}" \
+          PR=$(gh pr create --base "${{ github.event.repository.default_branch }}" \
             --title "Question from issue #${ISSUE_NUMBER}" \
-            --body "Created automatically from issue #${ISSUE_NUMBER}. A reviewer will check it. Closes #${ISSUE_NUMBER}."
-          gh issue comment "$ISSUE_NUMBER" --body "Thank you! Your question has been turned into a record and sent for review. You will be credited when it is accepted."
-      - name: Tell the contributor what to fix
+            --body "Created automatically from issue #${ISSUE_NUMBER}. A reviewer checks the typing and the answer, then approves. Closes #${ISSUE_NUMBER}.
+
+          fingerprint-${FP}")
+          gh pr merge "$PR" --auto --squash --delete-branch || true
+          # Pull requests opened with the built-in token do not start the normal checks,
+          # so we start the validate check ourselves on the new branch.
+          gh workflow run validate.yml --ref "$BRANCH" || true
+          gh issue comment "$ISSUE_NUMBER" --body "Thank you! Your question was turned into a record and sent for review. It will be added as soon as a reviewer approves it, and you will be credited."
+      - name: Tell the contributor what happened
         if: failure()
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
         run: |
-          MSG="Thank you for your submission. Something needs a small fix before we can use it."
+          MSG="Thank you for your submission."
           if [ -f /tmp/submission-error.txt ]; then MSG="$MSG"$'\n\n'"$(cat /tmp/submission-error.txt)"; fi
           gh issue comment "$ISSUE_NUMBER" --body "$MSG"
+          if [ -f /tmp/submission-error.txt ] && grep -qE "already in the collection|already sent this question" /tmp/submission-error.txt; then
+            gh issue close "$ISSUE_NUMBER" --reason "not planned"
+          fi
