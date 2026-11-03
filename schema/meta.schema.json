@@ -24,7 +24,7 @@
         "type": "string",
         "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]+)*$"
       },
-      "description": "Language codes. Use en for English, fr for French, pcm for Cameroon Pidgin English. Use the ISO 639-3 code for other languages."
+      "description": "Language codes. Use en for English, fr for French, wes for Cameroon Pidgin English (pcm is Nigerian Pidgin). Use the ISO 639-3 code for other languages."
     },
     "source": {
       "type": "object",

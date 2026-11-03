@@ -63,7 +63,8 @@ cameroon-open-data/
     ├── religion-and-community/
     ├── sports/
     ├── technology-and-infrastructure/
-    └── daily-life/
+    ├── daily-life/
+    └── dataset-catalogue/    datasets held elsewhere, listed with licence and link
 ```
 
 ## One format that everyone can follow

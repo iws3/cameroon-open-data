@@ -20,7 +20,7 @@ Each record has four parts.
 | Field | Required | Meaning |
 |---|---|---|
 | `contributor` | yes | Your GitHub username or the name you want to be credited under. |
-| `language` | yes | List of language codes. `en` English, `fr` French, `pcm` Cameroon Pidgin English. For other languages use the ISO 639-3 code. |
+| `language` | yes | List of language codes. `en` English, `fr` French, `wes` Cameroon Pidgin English (not `pcm`, which is Nigerian Pidgin). For other languages use the ISO 639-3 code. |
 | `source.kind` | yes | One of `exam_paper`, `official_publication`, `book`, `newspaper_or_magazine`, `website`, `broadcast`, `oral_tradition`, `field_recording`, `personal_knowledge`, `other`. |
 | `source.citation` | yes | Where it came from, written so another person can find it. |
 | `source.url`, `source.year` | no | A link and the year of the source. |

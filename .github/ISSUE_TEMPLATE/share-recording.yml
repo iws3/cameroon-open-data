@@ -26,6 +26,7 @@ body:
         - "Sports"
         - "Technology and infrastructure"
         - "Daily life"
+        - "Dataset catalogue"
         - "Not sure"
     validations:
       required: true

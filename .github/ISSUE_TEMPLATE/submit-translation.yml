@@ -83,6 +83,10 @@ body:
         - "Daily life / Conversations and dialogues"
         - "Daily life / Common questions"
         - "Daily life / Emergency and safety"
+        - "Dataset catalogue / Languages and speech"
+        - "Dataset catalogue / Geography and maps"
+        - "Dataset catalogue / Education and exams"
+        - "Dataset catalogue / Other datasets"
         - "Not sure (the maintainers will place it)"
     validations:
       required: true
