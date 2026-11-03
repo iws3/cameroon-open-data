@@ -176,6 +176,13 @@ STRUCTURE = {
     }),
 }
 
+STRUCTURE["dataset-catalogue"] = ("A catalogue of Cameroonian datasets that live elsewhere. We record each one with its steward, licence and link instead of copying it.", "", {
+    "languages-and-speech": ("Speech and language datasets held by other organisations, including Pidgin and national languages.", SR, {}),
+    "geography-and-maps": ("Map and boundary datasets held by other organisations.", SR, {}),
+    "education-and-exams": ("Education and examination datasets held by other organisations.", SR, {}),
+    "other-datasets": ("Any other Cameroonian dataset held by another organisation.", SR, {}),
+})
+
 TEMPLATE = """# {title}
 
 {desc}

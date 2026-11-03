@@ -87,7 +87,7 @@ FACT_KINDS = {
 }
 
 LANG_CODES = {
-    "english": "en", "french": "fr", "pidgin": "pcm", "cameroon pidgin": "pcm", "cameroon pidgin english": "pcm",
+    "english": "en", "french": "fr", "pidgin": "wes", "cameroon pidgin": "wes", "cameroon pidgin english": "wes",
     "camfranglais": "fr-x-camfrang", "ewondo": "ewo", "duala": "dua", "douala": "dua", "basaa": "bas", "bassa": "bas",
     "bamum": "bax", "bulu": "bum", "ghomala": "bbj", "fefe": "fmp", "medumba": "byv", "yemba": "ybb", "kom": "bkm",
     "lamnso": "lns", "nso": "lns", "fulfulde": "fub", "hausa": "hau", "bakweri": "bri",
@@ -116,7 +116,7 @@ def resolve_language(choice, other):
     if c.startswith("french"):
         return ["fr"], ""
     if c.startswith("cameroon pidgin"):
-        return ["pcm"], ""
+        return ["wes"], ""
     if c.startswith("camfranglais"):
         return ["fr-x-camfrang"], ""
     names = [n.strip() for n in re.split(r",|;| and ", other or "") if n.strip()] or [""]

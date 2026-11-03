@@ -64,9 +64,9 @@ def main():
         fields = parse(body, EXAM_LABELS)
         for needed, human in [("exam", "Exam"), ("subject", "Subject"), ("question", "The question")]:
             if not fields.get(needed):
-                fail(f"The box '{human}' is empty, so I could not create a record. Please edit your issue and fill it in.")
+                fail(f"The box '{human}' is empty, so I could not create a record. Please submit the form again with that box filled in.")
         if "[x]" not in fields.get("agreement", "").lower():
-            fail("The agreement box was not ticked. Please tick it and try again.")
+            fail("The agreement box was not ticked. Please submit the form again with the box ticked.")
         record, folder, filename, fp = build_record(fields, user)
     else:
         spec = FORMS[form_id]
@@ -74,9 +74,9 @@ def main():
         fields = parse(body, labels)
         for f in spec["fields"]:
             if f["req"] and f["kind"] != "checkboxes" and not fields.get(f["id"]):
-                fail(f"The box '{f['label']}' is empty, so I could not create a record. Please edit your issue and fill it in.")
+                fail(f"The box '{f['label']}' is empty, so I could not create a record. Please submit the form again with that box filled in.")
         if "[x]" not in fields.get("agreement", "").lower():
-            fail("The agreement box was not ticked. Please tick it and try again.")
+            fail("The agreement box was not ticked. Please submit the form again with the box ticked.")
         record, folder, filename, fp = generic_records.build(form_id, fields, user)
 
     out = os.environ.get("GITHUB_OUTPUT")

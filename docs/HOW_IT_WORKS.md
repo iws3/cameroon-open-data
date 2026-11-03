@@ -11,7 +11,7 @@ Cameroon Open Data is a Git repository that stores Cameroonian knowledge as smal
 | Part | What it is for |
 |---|---|
 | `README.md` | The story and invitation for the public. |
-| `data/` | The collection itself. 15 sectors, about 140 folders, each with a short guide. Ordinary Level has one folder per subject. |
+| `data/` | The collection itself. 16 sectors, about 150 folders, each with a short guide. Ordinary Level has one folder per subject. |
 | `schema/` | The rules that every record must follow (required fields, allowed values). |
 | `tools/validate.py` | The checker. It reads every data file, applies the schema, and refuses exact duplicates. |
 | `tools/common.py` | Shared helpers: it builds a record from form answers, chooses the folder and file name, and computes the question fingerprint. |

@@ -109,13 +109,14 @@ def build_record(f, contributor_fallback):
     rights = RIGHTS.get(f.get("rights", "").lower(), "unclear_needs_review")
     citation_bits = [exam, subject, str(year) if year else "", f.get("paper", "")]
     label = " ".join(b for b in citation_bits if b)
+    note = f.get("source_note", "")
     prefix = {"exam_paper": "Past paper submitted by a contributor: ",
               "personal_knowledge": "Written by the contributor: ",
               "book": "Textbook or revision book: "}.get(kind, "Submitted by a contributor: ")
     meta = {
         "contributor": f.get("contributor") or contributor_fallback,
         "language": LANGUAGES.get(f.get("language", "english").lower(), ["en"]),
-        "source": {"kind": kind, "citation": prefix + label},
+        "source": {"kind": kind, "citation": prefix + label + (". " + note if note else "")},
         "rights": rights,
         "region": "national",
         "collected_on": date.today().isoformat(),
