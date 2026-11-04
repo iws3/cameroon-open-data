@@ -12,6 +12,7 @@ body:
       label: "Folder"
       description: "Choose where it belongs. If you are unsure, choose the last option."
       options:
+        - "Education / Higher education institutions"
         - "Education / Curricula and textbooks"
         - "Culture / Proverbs and sayings"
         - "Culture / Folktales and oral literature"
