@@ -74,6 +74,7 @@ STRUCTURE = {
             "security-services": ("Recruitment and entrance competitions for the police, gendarmerie and armed forces.", EQ, {}),
             "other-concours": ("Any other competitive entrance or recruitment examination.", EQ, {}),
         }),
+        "higher-education-institutions": ("Universities and other institutions of higher education in Cameroon.", SR + ", " + TD, {}),
         "curricula-and-textbooks": ("Official syllabi, lesson notes and textbook content that may legally be shared.", TD + ", " + "qa_pair", {}),
     }),
     "culture": ("The traditions, arts and customs of Cameroon's peoples.", "", {
