@@ -86,6 +86,10 @@ The forms are generated from one description in `tools/forms_spec.py`. To add a 
 
 Languages: the contributor picks English, French, Pidgin or Camfranglais, or types the name of another language. Known Cameroonian languages are matched to their codes automatically. A language the system does not know is stored as `und` with the name in `language_note`, so nothing is rejected and a reviewer can fix the code later.
 
+## 5c. Exporting for AI systems
+
+`python tools/export_rag.py` turns the records into chunks for a retrieval system, with metadata and an evaluation set. `python tools/rag_demo.py --eval` runs a keyword baseline over them. A GitHub Action builds the export after every merge to the default branch. See `docs/RAG_GUIDE.md`.
+
 ## 6. Other ways to contribute
 
 **Photos.** The photo form creates an issue labelled `needs-transcription`. No robot runs. A volunteer types the questions through the question form.

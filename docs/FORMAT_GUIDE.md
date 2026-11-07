@@ -38,7 +38,7 @@ Required: `exam_name`, `subject`, `question_text`. Optional: `year` (leave it ou
 Use one record for each numbered question and keep all its parts, (a), (b), (c), together in `question_text`, with the marks where the paper prints them. Describe any diagram in words in `figure_description`. Keep the question in its original language. If a question depends on a diagram, save the image beside your file and give its relative path in `figure_file`.
 
 ### qa_pair
-Required: `question`, `answer`. Optional: `topic`, `evidence`.
+Required: `question`, `answer`. Optional: `topic`, `evidence`, and `based_on`, a list of the ids of the records that hold the information needed to answer. `based_on` lets the AI team test retrieval exactly, so please add it when you derive a question from a record.
 
 ### text_document
 Required: `kind` and `text`. Kinds include proverb, folktale, song_lyrics, poem, speech, law_text, news_article, article, description, recipe, dictionary_entry, oral_history and other. Optional: `title`, `author_or_speaker`, `translation_en`, `translation_fr`, `meaning_or_context`.
