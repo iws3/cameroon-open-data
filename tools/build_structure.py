@@ -84,6 +84,7 @@ STRUCTURE = {
         "festivals-and-ceremonies": ("Festivals, rites of passage, weddings, funerals and other ceremonies.", TD + ", " + SR, {}),
         "food-and-cuisine": ("Dishes, recipes, ingredients and food customs by region and community.", TD + ", " + SR, {}),
         "art-and-craft": ("Sculpture, weaving, pottery, beadwork and other crafts, with their makers' communities.", TD + ", " + SR, {}),
+        "literature-and-writers": ("Cameroonian authors, books and literary traditions in French, English and Cameroonian languages.", TD + ", " + SR, {}),
         "film-and-cinema": ("Cameroonian films, filmmakers, film festivals and the film industry, including Collywood.", TD + ", " + SR, {}),
         "chieftaincy-and-traditions": ("Traditional rulership, titles, palaces and customary institutions.", TD + ", " + SR, {}),
         "dress-and-attire": ("Traditional and modern dress and the occasions it belongs to.", TD + ", " + SR, {}),

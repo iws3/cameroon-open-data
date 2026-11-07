@@ -1,0 +1,26 @@
+name: Export for RAG
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - "data/**"
+      - "tools/export_rag.py"
+      - "tools/common.py"
+  workflow_dispatch:
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - run: python tools/validate.py
+      - run: python tools/export_rag.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rag-export
+          path: build/rag/
