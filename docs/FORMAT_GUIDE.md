@@ -1,7 +1,5 @@
 # Format guide
 
-**You do not have to write this format by hand.** Most contributors use the web form or the spreadsheet template described in `docs/EASY_START.md`, and the project converts their answers into this format automatically. This page is for developers and for anyone curious about what happens behind the scenes.
-
 Every contribution is a `.jsonl` file. That means a plain text file where each line is one complete record written as JSON. You can write it by hand, produce it from a spreadsheet, or generate it with a script. Always save it as UTF-8.
 
 Working examples of every record type are in `docs/examples/format-illustrations.jsonl`. They are format illustrations only and are not real data.
@@ -20,7 +18,7 @@ Each record has four parts.
 | Field | Required | Meaning |
 |---|---|---|
 | `contributor` | yes | Your GitHub username or the name you want to be credited under. |
-| `language` | yes | List of language codes. `en` English, `fr` French, `wes` Cameroon Pidgin English (not `pcm`, which is Nigerian Pidgin). For other languages use the ISO 639-3 code. |
+| `language` | yes | List of language codes. `en` English, `fr` French, `pcm` Cameroon Pidgin English. For other languages use the ISO 639-3 code. |
 | `source.kind` | yes | One of `exam_paper`, `official_publication`, `book`, `newspaper_or_magazine`, `website`, `broadcast`, `oral_tradition`, `field_recording`, `personal_knowledge`, `other`. |
 | `source.citation` | yes | Where it came from, written so another person can find it. |
 | `source.url`, `source.year` | no | A link and the year of the source. |
@@ -33,12 +31,12 @@ Each record has four parts.
 ## The six record types
 
 ### exam_question
-Required: `exam_name`, `subject`, `question_text`. Optional: `year` (leave it out if unknown), `exam_body`, `session`, `paper`, `section`, `question_number`, `figure_description`, `question_format` (multiple_choice, short_answer, essay, problem_solving, practical, true_false, fill_in, other), `options`, `answer`, `answer_explanation`, `marks`, `topics`, `figure_file`.
+Required: `exam_name`, `subject`, `year`, `question_text`. Optional: `exam_body`, `session`, `paper`, `question_number`, `question_format` (multiple_choice, short_answer, essay, problem_solving, practical, true_false, fill_in, other), `options`, `answer`, `answer_explanation`, `marks`, `topics`, `figure_file`.
 
-Use one record for each numbered question and keep all its parts, (a), (b), (c), together in `question_text`, with the marks where the paper prints them. Describe any diagram in words in `figure_description`. Keep the question in its original language. If a question depends on a diagram, save the image beside your file and give its relative path in `figure_file`.
+Keep the question in its original language. If a question depends on a diagram, save the image beside your file and give its relative path in `figure_file`.
 
 ### qa_pair
-Required: `question`, `answer`. Optional: `topic`, `evidence`, and `based_on`, a list of the ids of the records that hold the information needed to answer. `based_on` lets the AI team test retrieval exactly, so please add it when you derive a question from a record.
+Required: `question`, `answer`. Optional: `topic`, `evidence`.
 
 ### text_document
 Required: `kind` and `text`. Kinds include proverb, folktale, song_lyrics, poem, speech, law_text, news_article, article, description, recipe, dictionary_entry, oral_history and other. Optional: `title`, `author_or_speaker`, `translation_en`, `translation_fr`, `meaning_or_context`.

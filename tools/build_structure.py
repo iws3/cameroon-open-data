@@ -15,38 +15,11 @@ TD = "text_document"
 SR = "structured_record"
 PT = "parallel_text, audio_transcript"
 
-SUBJECTS_OL = {
-    "english-language": ("GCE Ordinary Level English Language: past questions, marking guides and worked answers." if "english-language" != "other-subjects" else "English Language. Create a subfolder named after the subject if it has many files.", EQ, {}),
-    "literature-in-english": ("GCE Ordinary Level Literature in English: past questions, marking guides and worked answers." if "literature-in-english" != "other-subjects" else "Literature in English. Create a subfolder named after the subject if it has many files.", EQ, {}),
-    "french": ("GCE Ordinary Level French: past questions, marking guides and worked answers." if "french" != "other-subjects" else "French. Create a subfolder named after the subject if it has many files.", EQ, {}),
-    "mathematics": ("GCE Ordinary Level Mathematics: past questions, marking guides and worked answers." if "mathematics" != "other-subjects" else "Mathematics. Create a subfolder named after the subject if it has many files.", EQ, {}),
-    "additional-mathematics": ("GCE Ordinary Level Additional Mathematics: past questions, marking guides and worked answers." if "additional-mathematics" != "other-subjects" else "Additional Mathematics. Create a subfolder named after the subject if it has many files.", EQ, {}),
-    "physics": ("GCE Ordinary Level Physics: past questions, marking guides and worked answers." if "physics" != "other-subjects" else "Physics. Create a subfolder named after the subject if it has many files.", EQ, {}),
-    "chemistry": ("GCE Ordinary Level Chemistry: past questions, marking guides and worked answers." if "chemistry" != "other-subjects" else "Chemistry. Create a subfolder named after the subject if it has many files.", EQ, {}),
-    "biology": ("GCE Ordinary Level Biology: past questions, marking guides and worked answers." if "biology" != "other-subjects" else "Biology. Create a subfolder named after the subject if it has many files.", EQ, {}),
-    "human-biology": ("GCE Ordinary Level Human Biology: past questions, marking guides and worked answers." if "human-biology" != "other-subjects" else "Human Biology. Create a subfolder named after the subject if it has many files.", EQ, {}),
-    "computer-science": ("GCE Ordinary Level Computer Science: past questions, marking guides and worked answers." if "computer-science" != "other-subjects" else "Computer Science. Create a subfolder named after the subject if it has many files.", EQ, {}),
-    "geography": ("GCE Ordinary Level Geography: past questions, marking guides and worked answers." if "geography" != "other-subjects" else "Geography. Create a subfolder named after the subject if it has many files.", EQ, {}),
-    "history": ("GCE Ordinary Level History: past questions, marking guides and worked answers." if "history" != "other-subjects" else "History. Create a subfolder named after the subject if it has many files.", EQ, {}),
-    "citizenship-education": ("GCE Ordinary Level Citizenship Education: past questions, marking guides and worked answers." if "citizenship-education" != "other-subjects" else "Citizenship Education. Create a subfolder named after the subject if it has many files.", EQ, {}),
-    "economics": ("GCE Ordinary Level Economics: past questions, marking guides and worked answers." if "economics" != "other-subjects" else "Economics. Create a subfolder named after the subject if it has many files.", EQ, {}),
-    "commerce": ("GCE Ordinary Level Commerce: past questions, marking guides and worked answers." if "commerce" != "other-subjects" else "Commerce. Create a subfolder named after the subject if it has many files.", EQ, {}),
-    "accounting": ("GCE Ordinary Level Accounting: past questions, marking guides and worked answers." if "accounting" != "other-subjects" else "Accounting. Create a subfolder named after the subject if it has many files.", EQ, {}),
-    "religious-studies": ("GCE Ordinary Level Religious Studies: past questions, marking guides and worked answers." if "religious-studies" != "other-subjects" else "Religious Studies. Create a subfolder named after the subject if it has many files.", EQ, {}),
-    "food-and-nutrition": ("GCE Ordinary Level Food and Nutrition: past questions, marking guides and worked answers." if "food-and-nutrition" != "other-subjects" else "Food and Nutrition. Create a subfolder named after the subject if it has many files.", EQ, {}),
-    "physical-education-and-sports": ("GCE Ordinary Level Physical Education and Sports: past questions, marking guides and worked answers." if "physical-education-and-sports" != "other-subjects" else "Physical Education and Sports. Create a subfolder named after the subject if it has many files.", EQ, {}),
-    "logic": ("GCE Ordinary Level Logic: past questions, marking guides and worked answers." if "logic" != "other-subjects" else "Logic. Create a subfolder named after the subject if it has many files.", EQ, {}),
-    "art": ("GCE Ordinary Level Art: past questions, marking guides and worked answers." if "art" != "other-subjects" else "Art. Create a subfolder named after the subject if it has many files.", EQ, {}),
-    "music": ("GCE Ordinary Level Music: past questions, marking guides and worked answers." if "music" != "other-subjects" else "Music. Create a subfolder named after the subject if it has many files.", EQ, {}),
-    "technical-drawing": ("GCE Ordinary Level Technical Drawing: past questions, marking guides and worked answers." if "technical-drawing" != "other-subjects" else "Technical Drawing. Create a subfolder named after the subject if it has many files.", EQ, {}),
-    "other-subjects": ("GCE Ordinary Level Any GCE Ordinary Level subject not listed above: past questions, marking guides and worked answers." if "other-subjects" != "other-subjects" else "Any GCE Ordinary Level subject not listed above. Create a subfolder named after the subject if it has many files.", EQ, {}),
-}
-
 STRUCTURE = {
     "_inbox": ("Not sure where your contribution belongs? Put it here. Maintainers will review it and move it to the right folder.", "any", {}),
     "education": ("Everything about learning and examinations in Cameroon.", "", {
         "gce": ("The Anglophone General Certificate of Education system, run by the GCE Board.", "", {
-            "ordinary-level": ("GCE Ordinary Level past questions, marking guides and worked answers, by subject and year.", EQ, SUBJECTS_OL),
+            "ordinary-level": ("GCE Ordinary Level past questions, marking guides and worked answers, by subject and year.", EQ, {}),
             "advanced-level": ("GCE Advanced Level past questions, marking guides and worked answers, by subject and year.", EQ, {}),
             "technical-ordinary-level": ("Technical and vocational GCE Ordinary Level papers, including practical and theory components.", EQ, {}),
             "technical-advanced-level": ("Technical and vocational GCE Advanced Level papers, including practical and theory components.", EQ, {}),
@@ -74,7 +47,6 @@ STRUCTURE = {
             "security-services": ("Recruitment and entrance competitions for the police, gendarmerie and armed forces.", EQ, {}),
             "other-concours": ("Any other competitive entrance or recruitment examination.", EQ, {}),
         }),
-        "higher-education-institutions": ("Universities and other institutions of higher education in Cameroon.", SR + ", " + TD, {}),
         "curricula-and-textbooks": ("Official syllabi, lesson notes and textbook content that may legally be shared.", TD + ", " + "qa_pair", {}),
     }),
     "culture": ("The traditions, arts and customs of Cameroon's peoples.", "", {
@@ -84,8 +56,6 @@ STRUCTURE = {
         "festivals-and-ceremonies": ("Festivals, rites of passage, weddings, funerals and other ceremonies.", TD + ", " + SR, {}),
         "food-and-cuisine": ("Dishes, recipes, ingredients and food customs by region and community.", TD + ", " + SR, {}),
         "art-and-craft": ("Sculpture, weaving, pottery, beadwork and other crafts, with their makers' communities.", TD + ", " + SR, {}),
-        "literature-and-writers": ("Cameroonian authors, books and literary traditions in French, English and Cameroonian languages.", TD + ", " + SR, {}),
-        "film-and-cinema": ("Cameroonian films, filmmakers, film festivals and the film industry, including Collywood.", TD + ", " + SR, {}),
         "chieftaincy-and-traditions": ("Traditional rulership, titles, palaces and customary institutions.", TD + ", " + SR, {}),
         "dress-and-attire": ("Traditional and modern dress and the occasions it belongs to.", TD + ", " + SR, {}),
     }),
@@ -179,13 +149,6 @@ STRUCTURE = {
     }),
 }
 
-STRUCTURE["dataset-catalogue"] = ("A catalogue of Cameroonian datasets that live elsewhere. We record each one with its steward, licence and link instead of copying it.", "", {
-    "languages-and-speech": ("Speech and language datasets held by other organisations, including Pidgin and national languages.", SR, {}),
-    "geography-and-maps": ("Map and boundary datasets held by other organisations.", SR, {}),
-    "education-and-exams": ("Education and examination datasets held by other organisations.", SR, {}),
-    "other-datasets": ("Any other Cameroonian dataset held by another organisation.", SR, {}),
-})
-
 TEMPLATE = """# {title}
 
 {desc}
@@ -210,12 +173,6 @@ def walk(base, name, node):
     folder = base / name
     folder.mkdir(parents=True, exist_ok=True)
     title = name.strip("_").replace("-", " ").title()
-    readme = folder / "README.md"
-    custom = readme.exists() and "<!-- custom-readme -->" in readme.read_text(encoding="utf-8")
-    if custom:
-        for c, v in children.items():
-            walk(folder, c, v)
-        return
     if children:
         lines = "\n".join(f"- `{c}`: {v[0]}" for c, v in children.items())
         (folder / "README.md").write_text(PARENT.format(title=title, desc=desc, children=lines), encoding="utf-8")

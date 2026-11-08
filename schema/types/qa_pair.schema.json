@@ -2,33 +2,12 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Question and answer pair",
   "type": "object",
-  "required": [
-    "question",
-    "answer"
-  ],
+  "required": ["question", "answer"],
   "additionalProperties": false,
   "properties": {
-    "question": {
-      "type": "string",
-      "minLength": 3
-    },
-    "answer": {
-      "type": "string",
-      "minLength": 1
-    },
-    "topic": {
-      "type": "string"
-    },
-    "evidence": {
-      "type": "string",
-      "description": "Where the answer can be checked."
-    },
-    "based_on": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      },
-      "description": "Ids of the records that contain what is needed to answer the question. Used to test retrieval."
-    }
+    "question": {"type": "string", "minLength": 3},
+    "answer": {"type": "string", "minLength": 1},
+    "topic": {"type": "string"},
+    "evidence": {"type": "string", "description": "Where the answer can be checked."}
   }
 }
