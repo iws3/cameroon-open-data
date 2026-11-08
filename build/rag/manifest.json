@@ -1,0 +1,39 @@
+{
+  "generated_on": "2026-11-08",
+  "source": "Cameroon Open Data",
+  "licence": "CC BY-SA 4.0",
+  "chunks": 199,
+  "chunks_by_type": {
+    "structured_record": 199
+  },
+  "chunks_by_sector": {
+    "culture": 86,
+    "dataset-catalogue": 7,
+    "education": 11,
+    "geography-and-environment": 73,
+    "history": 13,
+    "sports": 9
+  },
+  "eval_questions": 371,
+  "eval_questions_with_ground_truth": 358,
+  "eval_ground_truth_exact": 357,
+  "qa_pairs_indexed": false,
+  "excluded_records": {
+    "rights": 0,
+    "sensitivity": 0
+  },
+  "filters": {
+    "exclude_rights": [
+      "unclear_needs_review"
+    ],
+    "exclude_sensitivity": [
+      "culturally_sensitive",
+      "needs_community_review"
+    ]
+  },
+  "notes": [
+    "Show the attribution field when you use a chunk.",
+    "Records are not yet reviewed by a second person unless verified_by says so.",
+    "Some records carry caveats where sources disagree. Repeat them instead of choosing a side."
+  ]
+}
