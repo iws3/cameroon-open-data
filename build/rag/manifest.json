@@ -2,21 +2,24 @@
   "generated_on": "2026-11-08",
   "source": "Cameroon Open Data",
   "licence": "CC BY-SA 4.0",
-  "chunks": 199,
+  "chunks": 255,
   "chunks_by_type": {
-    "structured_record": 199
+    "structured_record": 243,
+    "parallel_text": 12
   },
   "chunks_by_sector": {
-    "culture": 86,
+    "culture": 118,
     "dataset-catalogue": 7,
     "education": 11,
     "geography-and-environment": 73,
-    "history": 13,
+    "history": 18,
+    "languages": 14,
+    "media-and-news": 5,
     "sports": 9
   },
-  "eval_questions": 371,
-  "eval_questions_with_ground_truth": 358,
-  "eval_ground_truth_exact": 357,
+  "eval_questions": 472,
+  "eval_questions_with_ground_truth": 459,
+  "eval_ground_truth_exact": 458,
   "qa_pairs_indexed": false,
   "excluded_records": {
     "rights": 0,

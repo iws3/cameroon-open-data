@@ -34,8 +34,9 @@ cameroon-open-data/
 │   ├── meta.schema.json
 │   ├── record.schema.json
 │   └── types/            one schema per kind of record
-├── docs/                 format guide, rights and privacy, examples
-├── tools/validate.py     checks your contribution before you submit it
+├── docs/                 easy start guide, format guide, rights and privacy, examples
+├── templates/            spreadsheet template for contributors with many questions
+├── tools/                checks and converters that run behind the scenes
 └── data/
     ├── _inbox/
     ├── education/
@@ -62,7 +63,8 @@ cameroon-open-data/
     ├── religion-and-community/
     ├── sports/
     ├── technology-and-infrastructure/
-    └── daily-life/
+    ├── daily-life/
+    └── dataset-catalogue/    datasets held elsewhere, listed with licence and link
 ```
 
 ## One format that everyone can follow
@@ -71,7 +73,7 @@ A collection is only useful if every piece of it can be read the same way. So ev
 
 There are six kinds of record: exam questions, question and answer pairs, text documents such as proverbs or speeches, parallel texts for translation, audio transcriptions, and structured records for facts like institutions, places and statistics. Every record, whatever its kind, also carries a small block of honest information about itself: who contributed it, what language it is in, where it came from, which region of Cameroon it belongs to, and whether we have the right to share it. That last part matters more than it might seem, and it is the reason a future researcher can trust what they find here.
 
-Before you submit anything, you run one command from the `tools` folder and it tells you, line by line, whether your records are valid. A friendly check also runs automatically when you open a pull request, so mistakes are caught early and kindly.
+You never have to write this format yourself. The question form and the spreadsheet template are converted into it automatically, and a friendly check runs on every contribution so that mistakes are caught early and kindly.
 
 ## Who this is for, and why it is for Cameroonians
 
@@ -81,7 +83,7 @@ Inside that community, everyone is welcome. A form four student with a stack of 
 
 ## How to contribute
 
-Once you have been given access, the path is short. Fork the repository using the Fork button on its page, find the folder where your contribution belongs, and add a file named with the year and a short description, such as `2019-mathematics-paper-1.jsonl`. Run the validation tool, then open a pull request and tell us a little about what you added. A maintainer and at least one other member will review it, and once it is accepted your name stays attached to it permanently as a contributor.
+Once you have been given access, you can contribute without writing a single line of code. Open the Issues tab, press New issue, and choose a form. There is a form for exam questions, and others for proverbs and stories, speeches and laws, questions with answers, translations between languages, and facts about places, institutions and events. If you have a recording or a paper but no time to type, share it and another volunteer will transcribe it. If you are a teacher with many questions, fill in our spreadsheet template and send it. Developers can also add files directly through a pull request. A reviewer checks every contribution, and once it is accepted your name stays attached to it permanently.
 
 You do not have to give us a thousand records. One carefully recorded proverb, with the language and the region it comes from, is a real contribution. A single corrected record is a real contribution. Translating a sentence into your mother tongue is a real contribution. The `CONTRIBUTING.md` file explains every step in more detail, and you can also contribute without writing any data at all by reviewing other people's work, finding mistakes, or proposing a folder that does not exist yet.
 

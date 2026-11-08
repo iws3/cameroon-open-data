@@ -8,4 +8,5 @@ This folder is organised into the subfolders below. Each subfolder has its own g
 - `francophone-secondary`: The Francophone secondary examination system. Write questions in their original French.
 - `primary`: Primary school certificates and entrance examinations in both systems.
 - `university-concours`: Competitive entrance examinations for universities, grandes écoles and professional schools.
+- `higher-education-institutions`: Universities and other institutions of higher education in Cameroon.
 - `curricula-and-textbooks`: Official syllabi, lesson notes and textbook content that may legally be shared.

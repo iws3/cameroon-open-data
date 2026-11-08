@@ -18,3 +18,4 @@ All contributed data lives here, arranged by sector. Choose the folder that fits
 - `sports`: Games and competition.
 - `technology-and-infrastructure`: The systems that connect the country.
 - `daily-life`: The ordinary conversations and situations of living in Cameroon.
+- `dataset-catalogue`: A catalogue of Cameroonian datasets that live elsewhere. We record each one with its steward, licence and link instead of copying it.

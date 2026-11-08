@@ -22,6 +22,9 @@ from common import ROOT, normalize
 
 DATA = ROOT / "data"
 LICENCE = "CC BY-SA 4.0"
+LANG_NAMES = {"en": "English", "fr": "French", "wes": "Cameroon Pidgin English", "lns": "Lamnso'", "ewo": "Ewondo", "dua": "Duala",
+              "bas": "Basaa", "bax": "Bamum", "bum": "Bulu", "bbj": "Ghomala'", "fmp": "Fe'fe'", "byv": "Medumba", "ybb": "Yemba",
+              "bkm": "Kom", "fub": "Fulfulde", "hau": "Hausa", "bri": "Bakweri"}
 
 
 def label(key):
@@ -45,8 +48,13 @@ def render(rec):
                 parts.append(f"{lab}: {c[k]}")
         return title, "\n".join(parts)
     if t == "parallel_text":
-        title = f"{c['source_language']} to {c['target_language']} translation"
-        return title, f"{title}\n{c['source_language']}: {c['source_text']}\n{c['target_language']}: {c['target_text']}" + (f"\nSubject: {c['domain']}" if c.get("domain") else "")
+        s, g = c["source_language"], c["target_language"]
+        sn, gn = LANG_NAMES.get(s, s), LANG_NAMES.get(g, g)
+        title = f"{c['source_text']} ({sn} to {gn})"
+        text = f"Translation from {sn} ({s}) to {gn} ({g})\n{sn}: {c['source_text']}\n{gn}: {c['target_text']}"
+        if c.get("domain"):
+            text += f"\nSubject: {c['domain']}"
+        return title, text
     if t == "audio_transcript":
         return "Transcript of " + c["audio_file"], "Transcript of " + c["audio_file"] + "\n" + c["transcript"]
     if t == "exam_question":

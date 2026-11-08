@@ -3,7 +3,8 @@ name: Validate data
 on:
   pull_request:
   push:
-    branches: [main]
+    branches: [master]
+  workflow_dispatch:
 
 jobs:
   validate:
