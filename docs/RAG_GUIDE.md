@@ -77,6 +77,8 @@ docs = [Document(text=c["text"], metadata=c["metadata"], doc_id=c["id"]) for c i
 
 Use keyword search and embeddings together, and give extra weight to an exact match on the record's name. `tools/rag_demo.py` is a keyword-only baseline with no libraries, and its mistakes show why: a question about the capital of the West Region can be outranked by records that merely mention that region.
 
+A real example from the baseline: the question "Who is Ngonnso?" ranks the record about the statue above the record about Ngonnso' herself, because both mention her name many times. A reranker, or a filter on `entity_type`, fixes this kind of mistake.
+
 Use the metadata for filters. `region` narrows a question about one part of the country, `sector` and `folder` separate culture from administration, and `type` and `entity_type` let you ask only about dishes, festivals or people.
 
 Questions will arrive in English, French and Pidgin, and the records are in English with French names. Use a multilingual embedding model and test with French questions.
@@ -95,7 +97,7 @@ Mind the dates. Facts about the current state of things (office holders, counts,
 
 `eval.jsonl` holds question and answer pairs. Where a pair has a `based_on` link, `relevant_chunk_ids` is exact (`"relevance": "exact"`). Otherwise it is a guess from names and is marked `heuristic`. Questions with no ground truth have an empty list and should be skipped for retrieval tests.
 
-Run the baseline with `python tools/rag_demo.py --eval`. On the first version of this data it found the right chunk in the top 3 for 96% of questions. Treat that as an upper bound: the questions were written from the same records and use their wording. Real users write vaguer, messier questions, so add some from your own logs.
+Run the baseline with `python tools/rag_demo.py --eval`. On the current data it finds the right chunk in the top 3 for about 94% of the questions that have ground truth. Treat that as an upper bound: the questions were written from the same records and use their wording. Real users write vaguer, messier questions, so add some from your own logs.
 
 The question and answer pairs are not in the index by default, so the answers cannot leak into the test. Use `--index-qa` if you want them as chunks as well, and test on separate questions if you do.
 

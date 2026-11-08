@@ -10,5 +10,8 @@ This folder is organised into the subfolders below. Each subfolder has its own g
 - `festivals-and-ceremonies`: Festivals, rites of passage, weddings, funerals and other ceremonies.
 - `food-and-cuisine`: Dishes, recipes, ingredients and food customs by region and community.
 - `art-and-craft`: Sculpture, weaving, pottery, beadwork and other crafts, with their makers' communities.
+- `literature-and-writers`: Cameroonian authors, books and literary traditions in French, English and Cameroonian languages.
+- `film-and-cinema`: Cameroonian films, filmmakers, film festivals and the film industry, including Collywood.
+- `peoples-and-communities`: Cameroon's peoples and communities: their origins, institutions, rulers, languages and traditions.
 - `chieftaincy-and-traditions`: Traditional rulership, titles, palaces and customary institutions.
 - `dress-and-attire`: Traditional and modern dress and the occasions it belongs to.
