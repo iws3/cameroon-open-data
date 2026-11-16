@@ -97,7 +97,7 @@ Mind the dates. Facts about the current state of things (office holders, counts,
 
 `eval.jsonl` holds question and answer pairs. Where a pair has a `based_on` link, `relevant_chunk_ids` is exact (`"relevance": "exact"`). Otherwise it is a guess from names and is marked `heuristic`. Questions with no ground truth have an empty list and should be skipped for retrieval tests.
 
-Run the baseline with `python tools/rag_demo.py --eval`. On the current data it finds the right chunk in the top 3 for about 94% of the questions that have ground truth. Treat that as an upper bound: the questions were written from the same records and use their wording. Real users write vaguer, messier questions, so add some from your own logs.
+Run the baseline with `python tools/rag_demo.py --eval`. On the current data it finds the right chunk in the top 3 for about 95% of the questions that have ground truth. Treat that as an upper bound: the questions were written from the same records and use their wording. Real users write vaguer, messier questions, so add some from your own logs.
 
 The question and answer pairs are not in the index by default, so the answers cannot leak into the test. Use `--index-qa` if you want them as chunks as well, and test on separate questions if you do.
 

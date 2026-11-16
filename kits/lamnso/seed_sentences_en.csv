@@ -1,0 +1,201 @@
+id,domain,english
+LNS-001,greetings,"Good morning, how did you sleep?"
+LNS-002,greetings,"Good afternoon, how are you?"
+LNS-003,greetings,"I am fine, thank you."
+LNS-004,greetings,What is your name?
+LNS-005,greetings,My name is Lukong.
+LNS-006,greetings,Where do you come from?
+LNS-007,greetings,I come from Kumbo.
+LNS-008,greetings,It is nice to meet you.
+LNS-009,greetings,Welcome to our home.
+LNS-010,greetings,Please come in and sit down.
+LNS-011,greetings,See you tomorrow.
+LNS-012,greetings,"Goodbye, and travel well."
+LNS-013,greetings,Thank you very much.
+LNS-014,greetings,You are welcome.
+LNS-015,greetings,"Excuse me, I did not understand."
+LNS-016,family,My mother is at home.
+LNS-017,family,My father works on the farm.
+LNS-018,family,She is my older sister.
+LNS-019,family,He is my younger brother.
+LNS-020,family,We have three children.
+LNS-021,family,My grandmother tells us stories.
+LNS-022,family,The baby is sleeping.
+LNS-023,family,My friend lives near the market.
+LNS-024,family,Who is that man?
+LNS-025,family,That woman is a teacher.
+LNS-026,family,The children are playing outside.
+LNS-027,family,Our neighbour is very kind.
+LNS-028,family,The Fon is meeting the elders.
+LNS-029,family,I love my family.
+LNS-030,family,Everyone is welcome.
+LNS-031,food and market,I am hungry.
+LNS-032,food and market,I am thirsty.
+LNS-033,food and market,Please give me some water.
+LNS-034,food and market,The food is ready.
+LNS-035,food and market,This soup is very tasty.
+LNS-036,food and market,We are eating rice and beans.
+LNS-037,food and market,I would like some bread.
+LNS-038,food and market,How much is this?
+LNS-039,food and market,It is too expensive.
+LNS-040,food and market,Can you reduce the price?
+LNS-041,food and market,I want to buy tomatoes and onions.
+LNS-042,food and market,The market is full of people.
+LNS-043,food and market,She sells fresh fish.
+LNS-044,food and market,He sells yams and plantains.
+LNS-045,food and market,Do you have fresh eggs?
+LNS-046,food and market,Please wrap it in a bag.
+LNS-047,food and market,I will pay tomorrow.
+LNS-048,food and market,Here is your change.
+LNS-049,food and market,We cook on a wood fire.
+LNS-050,food and market,Wash your hands before eating.
+LNS-051,health,I am sick.
+LNS-052,health,My head hurts.
+LNS-053,health,My stomach hurts.
+LNS-054,health,I have a fever.
+LNS-055,health,I need to see a doctor.
+LNS-056,health,Where is the hospital?
+LNS-057,health,Take this medicine twice a day.
+LNS-058,health,Drink plenty of water.
+LNS-059,health,The baby has a cough.
+LNS-060,health,Rest and you will feel better.
+LNS-061,health,Do not drink dirty water.
+LNS-062,health,I feel better today.
+LNS-063,health,"Call the nurse, please."
+LNS-064,health,She is expecting a baby.
+LNS-065,health,Wash your hands with soap.
+LNS-066,farming and nature,The farmers are going to the farm.
+LNS-067,farming and nature,We plant maize in the rainy season.
+LNS-068,farming and nature,The rain is falling.
+LNS-069,farming and nature,The sun is hot today.
+LNS-070,farming and nature,The river is deep.
+LNS-071,farming and nature,There are many trees on the hill.
+LNS-072,farming and nature,The cow is eating grass.
+LNS-073,farming and nature,The goat has two young ones.
+LNS-074,farming and nature,The chickens are in the yard.
+LNS-075,farming and nature,We harvest the crops when they are ripe.
+LNS-076,farming and nature,The soil is rich.
+LNS-077,farming and nature,The road is muddy after the rain.
+LNS-078,farming and nature,A bird is singing in the tree.
+LNS-079,farming and nature,The mountain is very high.
+LNS-080,farming and nature,We need more rain.
+LNS-081,travel and places,Where is the market?
+LNS-082,travel and places,The bus is coming.
+LNS-083,travel and places,How far is it to Bamenda?
+LNS-084,travel and places,I am going to Kumbo.
+LNS-085,travel and places,Turn left at the junction.
+LNS-086,travel and places,Go straight and then turn right.
+LNS-087,travel and places,The road is long.
+LNS-088,travel and places,I am lost.
+LNS-089,travel and places,"Can you help me, please?"
+LNS-090,travel and places,We will arrive in the evening.
+LNS-091,travel and places,The motorbike is fast.
+LNS-092,travel and places,"Stop here, please."
+LNS-093,travel and places,Which way is the church?
+LNS-094,travel and places,The school is near the road.
+LNS-095,travel and places,Safe travels.
+LNS-096,school,The children go to school.
+LNS-097,school,The teacher is writing on the board.
+LNS-098,school,Open your books.
+LNS-099,school,Read this sentence aloud.
+LNS-100,school,I can read and write.
+LNS-101,school,Please repeat after me.
+LNS-102,school,Who knows the answer?
+LNS-103,school,The exam begins tomorrow.
+LNS-104,school,I like mathematics.
+LNS-105,school,She is learning English.
+LNS-106,school,Learning your own language is important.
+LNS-107,school,Listen carefully.
+LNS-108,school,Write your name here.
+LNS-109,school,The lesson is finished.
+LNS-110,school,Ask a question if you do not understand.
+LNS-111,culture and festivals,We are going to the festival.
+LNS-112,culture and festivals,The drummers are playing.
+LNS-113,culture and festivals,The dancers wear beautiful clothes.
+LNS-114,culture and festivals,The elders sit in the front.
+LNS-115,culture and festivals,We respect our elders.
+LNS-116,culture and festivals,The Fon greets the people.
+LNS-117,culture and festivals,Today is a day of celebration.
+LNS-118,culture and festivals,We tell stories at night.
+LNS-119,culture and festivals,Our ancestors lived here long ago.
+LNS-120,culture and festivals,This is a very old tradition.
+LNS-121,culture and festivals,The women are singing.
+LNS-122,culture and festivals,The masked dancers come out at the ceremony.
+LNS-123,culture and festivals,Bring a gift for the family.
+LNS-124,culture and festivals,We share food with our guests.
+LNS-125,culture and festivals,Our language is our heritage.
+LNS-126,film music and stories,Let us watch a film tonight.
+LNS-127,film music and stories,This film is very funny.
+LNS-128,film music and stories,I love this song.
+LNS-129,film music and stories,The singer has a beautiful voice.
+LNS-130,film music and stories,"Play the next song, please."
+LNS-131,film music and stories,The story begins long ago.
+LNS-132,film music and stories,Once there was a clever tortoise.
+LNS-133,film music and stories,What happens at the end?
+LNS-134,film music and stories,The actors are very good.
+LNS-135,film music and stories,Can you turn up the volume?
+LNS-136,film music and stories,Can you turn down the volume?
+LNS-137,film music and stories,The film starts at eight o'clock.
+LNS-138,film music and stories,I want to watch a Cameroonian film.
+LNS-139,film music and stories,Who is your favourite musician?
+LNS-140,film music and stories,We danced all night.
+LNS-141,film music and stories,The movie made me cry.
+LNS-142,film music and stories,Tell me a story.
+LNS-143,film music and stories,The drums beat faster.
+LNS-144,film music and stories,Share this video with your friends.
+LNS-145,film music and stories,This channel shows films in our language.
+LNS-146,time numbers weather,What time is it?
+LNS-147,time numbers weather,It is early in the morning.
+LNS-148,time numbers weather,It is late at night.
+LNS-149,time numbers weather,Today is Sunday.
+LNS-150,time numbers weather,Tomorrow I will travel.
+LNS-151,time numbers weather,Yesterday it rained.
+LNS-152,time numbers weather,"One, two, three, four, five."
+LNS-153,time numbers weather,I have ten books.
+LNS-154,time numbers weather,She has twenty chickens.
+LNS-155,time numbers weather,The year has twelve months.
+LNS-156,time numbers weather,It is cold in the morning.
+LNS-157,time numbers weather,It is very hot today.
+LNS-158,time numbers weather,The wind is strong.
+LNS-159,time numbers weather,The week has seven days.
+LNS-160,time numbers weather,Wait for me a little.
+LNS-161,feelings and opinions,I am happy.
+LNS-162,feelings and opinions,I am sad.
+LNS-163,feelings and opinions,I am tired.
+LNS-164,feelings and opinions,I am afraid.
+LNS-165,feelings and opinions,I am very proud of you.
+LNS-166,feelings and opinions,I do not like this.
+LNS-167,feelings and opinions,This is good.
+LNS-168,feelings and opinions,This is not good.
+LNS-169,feelings and opinions,I agree with you.
+LNS-170,feelings and opinions,I do not agree.
+LNS-171,feelings and opinions,I am sorry.
+LNS-172,feelings and opinions,Please forgive me.
+LNS-173,feelings and opinions,I am angry.
+LNS-174,feelings and opinions,I miss my home.
+LNS-175,feelings and opinions,I believe you.
+LNS-176,instructions and questions,Come here.
+LNS-177,instructions and questions,Go home.
+LNS-178,instructions and questions,Sit down.
+LNS-179,instructions and questions,Stand up.
+LNS-180,instructions and questions,Wait a moment.
+LNS-181,instructions and questions,"Be quiet, please."
+LNS-182,instructions and questions,Listen to me.
+LNS-183,instructions and questions,Look at this.
+LNS-184,instructions and questions,Why are you crying?
+LNS-185,instructions and questions,Who is knocking?
+LNS-186,instructions and questions,What are you doing?
+LNS-187,instructions and questions,When will you return?
+LNS-188,instructions and questions,How many are you?
+LNS-189,instructions and questions,Which one do you want?
+LNS-190,instructions and questions,Do you speak Lamnso'?
+LNS-191,phone and internet,"Please call me tomorrow."
+LNS-192,phone and internet,My phone has no credit.
+LNS-193,phone and internet,I will send you a message.
+LNS-194,phone and internet,The network is poor here.
+LNS-195,phone and internet,Charge your phone.
+LNS-196,phone and internet,Can I use your phone?
+LNS-197,phone and internet,The shop sells airtime.
+LNS-198,phone and internet,Send me the picture.
+LNS-199,phone and internet,I saw it on the internet.
+LNS-200,phone and internet,Turn off your phone in church.
